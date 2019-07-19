@@ -12,9 +12,9 @@ RUN git clone https://github.com/python-pillow/Pillow.git
 WORKDIR /site/Pillow
 RUN python ./setup.py install
 WORKDIR /site/OTTGaaS
-#this changes the port that the server runs on. Change 80 to your desired port
-RUN sed 's/5000/80/g' /site/OTTGaaS/server.py > /site/OTTGaaS/customserver.py
 RUN pip install -r /site/OTTGaaS/requirements.txt
+#this changes the port that the server runs on. Change 80 to your desired port
+ENV VCAP_APP_PORT="80"
 
-EXPOSE 80
-ENTRYPOINT python /site/OTTGaaS/customserver.py
+EXPOSE 80/tcp
+ENTRYPOINT python /site/OTTGaaS/server.py
