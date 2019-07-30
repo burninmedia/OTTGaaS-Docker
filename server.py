@@ -4,7 +4,6 @@ from flask_restful import reqparse, abort, Api, Resource
 from generator import generate_new_tombstone
 import os
 import re
-import logging
 
 app = Flask(__name__)
 api = Api(app)
@@ -22,7 +21,6 @@ class GenerateTombstone(Resource):
         """
         args = parser.parse_args()
         out_file_name = generate_new_tombstone(args.name, args.inscription)
-        logging.info(out_file_name)
         return send_file("created_tombstones/{}.png".format(out_file_name), mimetype='image/png')
 
 class Tombstone(Resource):
@@ -31,7 +29,7 @@ class Tombstone(Resource):
         """
         Return a previously generated tombstone
         """
-        file_name = "./created_tombstones/{}.png".format(tomb_name)
+        file_name = "/site/OTTGaaS/created_tombstones/{}.png".format(tomb_name)
         if os.path.isfile(file_name):
             return send_file(file_name, mimetype='image/png')
         else:
@@ -52,7 +50,7 @@ class SlackTombstone(Resource):
             out_file_name = generate_new_tombstone(name, inscription)
         else:
             return "Malformed Request. Your text needs `name` and `inscription` in it."
-        logging.info(out_file_name)
+
         data = {
             "text": "Here's your tombstone",
             "response_type": "in_channel",
