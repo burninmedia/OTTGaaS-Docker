@@ -50,7 +50,7 @@ class SlackTombstone(Resource):
             out_file_name = generate_new_tombstone(name, inscription)
         else:
             return "Malformed Request. Your text needs `name` and `inscription` in it."
-
+        print(out_file_name)
         data = {
             "text": "Here's your tombstone",
             "response_type": "in_channel",
