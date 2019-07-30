@@ -31,7 +31,7 @@ class Tombstone(Resource):
         """
         Return a previously generated tombstone
         """
-        file_name = "created_tombstones/{}.png".format(tomb_name)
+        file_name = "./created_tombstones/{}.png".format(tomb_name)
         if os.path.isfile(file_name):
             return send_file(file_name, mimetype='image/png')
         else:
