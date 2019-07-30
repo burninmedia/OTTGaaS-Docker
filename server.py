@@ -58,7 +58,7 @@ class SlackTombstone(Resource):
                 {
                     "Title:": "Your Tombstone",
                     "fallback": "Something broke",
-                    "image_url": "https://ottgaas.mybluemix.net/tombstone/{}".format(out_file_name)
+                    "image_url": "http://104.197.41.149:31261/tombstone/:{}".format(out_file_name)
                 }
             ]
         }
