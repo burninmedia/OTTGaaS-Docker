@@ -21,6 +21,7 @@ class GenerateTombstone(Resource):
         """
         args = parser.parse_args()
         out_file_name = generate_new_tombstone(args.name, args.inscription)
+        logging.info(out_file_name)
         return send_file("created_tombstones/{}.png".format(out_file_name), mimetype='image/png')
 
 class Tombstone(Resource):
