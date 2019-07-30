@@ -15,6 +15,7 @@ WORKDIR /site/OTTGaaS
 RUN pip install -r /site/OTTGaaS/requirements.txt
 #this changes the port that the server runs on. Change 80 to your desired port
 ENV VCAP_APP_PORT="80"
-
+#Add your hostname or IP of the server so it can respond to slackmessages.
+ENV server_url=""
 EXPOSE 80/tcp
 ENTRYPOINT python /site/OTTGaaS/server.py
