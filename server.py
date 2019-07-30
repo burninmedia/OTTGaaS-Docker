@@ -4,6 +4,7 @@ from flask_restful import reqparse, abort, Api, Resource
 from generator import generate_new_tombstone
 import os
 import re
+import logging
 
 app = Flask(__name__)
 api = Api(app)
